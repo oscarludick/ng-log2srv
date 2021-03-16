@@ -1,6 +1,6 @@
 {
-  "name": "log2srv",
-  "version": "0.0.1",
+  "name": "ng-log2srv",
+  "version": "0.0.0-semantically-released",
   "peerDependencies": {
   },
   "dependencies": {
