@@ -1,0 +1,9 @@
+{
+  "name": "log2srv",
+  "version": "0.0.1",
+  "peerDependencies": {
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}
