@@ -149,29 +149,29 @@ By default this library creates and object with all the necessary info for each 
 
 For example a click event provides the following information.
 
-```json
+```ts
 {
-  client: {
-    agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36"
-    code: "Mozilla"
-    java: false
-    langs: (3) ["es-419", "es", "en"]
-    platform: "MacIntel"
-    plugins: (3) ["Chrome PDF Plugin", "Chrome PDF Viewer", "Native Client"]
+  "client": {
+    "agent": "Mozilla/5.0..."
+    "code": "Mozilla"
+    "java": false
+    "langs": (3) ["es-419", "es", "en"]
+    "platform": "MacIntel"
+    "plugins": (3) ["Chrome PDF Plugin", "Chrome PDF Viewer", "Native Client"]
   }
-  dom: {
-    description: ""
-    lifetime: 1787.9050000010466
-    target: "<img width="300" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,\">"
+  "dom": {
+    "description": ""
+    "lifetime": 1787.9050000010466
+    "target": "<img width="300" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,\">"
   }
-  event: {
-    name: "click"
-    type: "MouseEvent"
+  "event": {
+    "name": "click"
+    "type": "MouseEvent"
   }
-  location: "http://localhost:4200/"
-  message: "click on x:268, y:347"
-  timestamp: "01-01-2021 00:00:01"
-  uuid: "client-ip"
+  "location": "http://localhost:4200/"
+  "message": "click on x:268, y:347"
+  "timestamp": "01-01-2021 00:00:01"
+  "uuid": "client-ip"
 }
 ```
 

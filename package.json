@@ -9,7 +9,7 @@
     "postbuild:lib": "cp README.md dist/log2srv/README.md",
     "test": "ng test",
     "lint": "ng lint",
-    "lint-lib": "ng lintlog2srv",
+    "lint-lib": "ng lint log2srv",
     "commit": "git-cz",
     "travis-deploy-once": "travis-deploy-once --pro",
     "semantic-release": "semantic-release"
