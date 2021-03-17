@@ -17,7 +17,7 @@ import {
 @Injectable()
 export class ConsoleLogger {
   private readonly colorSupport: boolean = false;
-  private currentUUID: string = '';
+  private currentUUID = '';
 
   constructor(
     @Inject(DOCUMENT_TOKEN) private readonly document: Document,
@@ -25,10 +25,10 @@ export class ConsoleLogger {
     @Inject(NAVIGATOR_TOKEN) private readonly navigator: Navigator,
     @Inject(UUID_TOKEN) private readonly uuid: BehaviorSubject<string>,
     @Inject(CONFIGURATION_TOKEN) private readonly config: Log2SrvConfig,
-    @Inject(PLATFORM_ID) private readonly platformId: Object,
+    @Inject(PLATFORM_ID) private readonly platformId: object,
     private readonly datePipe: DatePipe
   ) {
-    this.uuid.subscribe((_uuid: string) => (this.currentUUID = _uuid));
+    this.uuid.subscribe((muuid: string) => (this.currentUUID = muuid));
     this.colorSupport = this.isIE();
   }
 
@@ -66,7 +66,7 @@ export class ConsoleLogger {
   }
 
   private printModernBrowser(logMessage: ConsoleMessage): void {
-    console.info(
+    console.log(
       `%c${logMessage.meta} \u27F6`,
       `color:${logMessage.color}; font-weight: bold`,
       `${this.document.title.toUpperCase()} ${this.location.pathname} (${
@@ -77,7 +77,7 @@ export class ConsoleLogger {
   }
 
   private printOldBrowser(logMessage: ConsoleMessage): void {
-    console.info(
+    console.log(
       `%c[${logMessage.meta}]`,
       `UUID: ${logMessage.message}`,
       logMessage.data

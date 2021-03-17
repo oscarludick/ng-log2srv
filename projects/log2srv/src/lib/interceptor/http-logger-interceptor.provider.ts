@@ -10,5 +10,5 @@ export function provideHttpLoggerInterceptor(): Provider[] {
       useClass: HttpLoggerInterceptor,
       multi: true,
     }
-  ]
+  ];
 }

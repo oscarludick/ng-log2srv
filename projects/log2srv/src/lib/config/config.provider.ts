@@ -13,7 +13,7 @@ export function provideConfiguration(config: Log2SrvConfig): Provider {
   };
 }
 
-function getConfig(config: Log2SrvConfig) {
+function getConfig(config: Log2SrvConfig): Log2SrvConfig {
   config = Object.assign({
     ...config,
     timestamp: config.timestamp || 'dd-MM-yyyy HH:mm:ss',

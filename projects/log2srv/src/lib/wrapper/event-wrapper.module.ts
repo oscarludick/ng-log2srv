@@ -11,8 +11,8 @@ import { Log2SrvConfig } from '../log2srv.config';
 export function appReplaceFactory(
   replaceRoot: ReplaceRootService,
   config: Log2SrvConfig
-) {
-  var lambda = (component: ComponentRef<any>) => {
+): (component: ComponentRef<any>) => void {
+  const lambda = (component: ComponentRef<any>) => {
     if (config.root) {
       if (config.root === component.componentType) {
         replaceRoot.replaceAppRoot(component);

@@ -13,12 +13,12 @@ export function Log2Srv(): ClassDecorator {
     method?: string,
     args?: string,
     value?: string
-  ) {
+  ): void {
     const parser = Log2SrvModule.mInjector!.get(LoggerParser);
     const logger = Log2SrvModule.mInjector!.get(LoggerWrapperService);
     const config = Log2SrvModule.mInjector!.get(CONFIGURATION_TOKEN);
 
-    let loggerModel: LoggerModel = parser.parseEvent({
+    const loggerModel: LoggerModel = parser.parseEvent({
       descriptorEvent: {
         event,
         location,
@@ -35,11 +35,14 @@ export function Log2Srv(): ClassDecorator {
     }
   }
 
-  return function (constructor: any) {
+  return (constructor: any) => {
     const name = constructor.name;
 
-    function _getCallback_(descriptors: Descriptors, descriptor: string) {
-      return descriptors[descriptor].value;
+    function _getCallback_(
+      mdescriptors: Descriptors,
+      mdescriptor: string
+    ): any {
+      return mdescriptors[mdescriptor].value;
     }
 
     function _getDescriptors_(): Descriptors {
@@ -48,14 +51,16 @@ export function Log2Srv(): ClassDecorator {
 
     const descriptors = _getDescriptors_();
 
-    for (let hook in descriptors) {
-      let original = _getCallback_(descriptors, hook);
-      constructor.prototype[hook] = function (...args: any[]) {
-        sendLog('invocation', name, hook, args.join(';'), '');
-        const result = original.apply(this, args);
-        sendLog('execution', name, hook, '', result || 'void');
-        return result;
-      };
+    for (const hook in descriptors) {
+      if (descriptors.hasOwnProperty(hook)) {
+        const original = _getCallback_(descriptors, hook);
+        constructor.prototype[hook] = function(...args: any[]): any {
+          sendLog('invocation', name, hook, args.join(';'), '');
+          const result = original.apply(this, args);
+          sendLog('execution', name, hook, '', result || 'void');
+          return result;
+        };
+      }
     }
   };
 }

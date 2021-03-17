@@ -21,7 +21,7 @@ import { PARSERS_TOKEN } from './parser.token';
 /** @dynamic */
 @Injectable()
 export class ParserCommonService {
-  private currentUUID: string = '';
+  private currentUUID = '';
 
   constructor(
     @Inject(NAVIGATOR_TOKEN) private readonly navigator: Navigator,
@@ -31,7 +31,7 @@ export class ParserCommonService {
     @Inject(PARSERS_TOKEN) private readonly parsers: ParserModelProvider[],
     private readonly datePipe: DatePipe
   ) {
-    this.uuid.subscribe((_uuid: string) => (this.currentUUID = _uuid));
+    this.uuid.subscribe((muuid: string) => (this.currentUUID = muuid));
   }
 
   getEventParser(

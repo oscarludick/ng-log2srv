@@ -12,8 +12,6 @@ export function provideLoggerParser(config: Log2SrvConfig): Provider[] {
     {
       provide: LoggerParser,
       useClass: LoggerParserService,
-      /*** Maybe in the future you could provide a logger parser */
-      //useClass: config.loggerParser || LoggerParserService,
     },
   ];
 }

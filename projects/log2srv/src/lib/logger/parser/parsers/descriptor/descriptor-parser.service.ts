@@ -48,7 +48,13 @@ export class DescriptorEventParserService {
     method?: string,
     args?: string,
     value?: string
-  ) {
+  ): {
+    event: 'invocation' | 'execution';
+    location?: string;
+    method?: string;
+    args?: string;
+    value?: string;
+  } {
     return {
       event,
       location: location || 'Not provided',

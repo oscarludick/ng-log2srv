@@ -57,8 +57,8 @@ export class HttpLoggerInterceptor implements HttpInterceptor {
     url: string,
     method: string,
     latency: number
-  ) {
-    let logger: LoggerModel = this.parser.parseEvent({
+  ): void {
+    const logger: LoggerModel = this.parser.parseEvent({
       httpEvent: {
         event,
         url,
@@ -79,9 +79,13 @@ export class HttpLoggerInterceptor implements HttpInterceptor {
    */
   private getTypeEvent(
     event: HttpRequest<any> | HttpResponse<any> | HttpErrorResponse
-  ) {
-    if (event instanceof HttpRequest) return 'request';
-    else if (event instanceof HttpResponse) return 'response';
-    else return 'error';
+  ): 'request' | 'response' | 'error' {
+    if (event instanceof HttpRequest) {
+      return 'request';
+    } else if (event instanceof HttpResponse) {
+      return 'response';
+    } else {
+      return 'error';
+    }
   }
 }

@@ -26,7 +26,7 @@ export class ReplaceRootService {
     private readonly componentFactoryResolver: ComponentFactoryResolver
   ) {}
 
-  public replaceAppRoot(originalRef: ComponentRef<any>) {
+  public replaceAppRoot(originalRef: ComponentRef<any>): void {
     const wrapperFactory = this.getFactory(EventWrapperComponent);
     const renderer: Renderer2 = this.getRenderer();
 

@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'event-wrapper',
+  selector: 'lib-event-wrapper',
   template: `<log2srv #componentRef></log2srv>`,
 })
 export class EventWrapperComponent {

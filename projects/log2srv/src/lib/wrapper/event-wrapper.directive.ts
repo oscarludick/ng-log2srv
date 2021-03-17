@@ -44,7 +44,7 @@ export class EventWrapperDirective {
   @HostListener('select', ['$event'])
   @HostListener('storage', ['$event'])
   @HostListener('unload', ['$event'])
-  onEventListener($event: Event) {
+  onEventListener($event: Event): void {
     const type = $event.type as LoggerTypesNames;
     if (this.config.events![type]?.enabled) {
       const model = this.parser.parseEvent({ domEvent: $event });

@@ -9,7 +9,7 @@ import { IpResponse } from './load-ip.model';
 
 @Injectable()
 export class LoadIPService {
-  private api: string = 'http://api.ipify.org/?format=json';
+  private api = 'http://api.ipify.org/?format=json';
   private config$: Observable<IpResponse> = of();
 
   constructor(
@@ -17,7 +17,7 @@ export class LoadIPService {
     private httpClient: HttpClient
   ) {}
 
-  load() {
+  load(): Observable<IpResponse> {
     this.config$ = this.httpClient.get<IpResponse>(this.api).pipe(
       shareReplay(1),
       catchError<IpResponse, Observable<IpResponse>>((_) =>
